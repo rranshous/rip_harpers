@@ -1,0 +1,27 @@
+### TESTS ON SADO
+
+threaded one year @ a time, one thread per arg: 5m10s, 3m37s
+hard dips of almost no cpu usage while waiting for batch response
+hard spikes of network usage as all the requests returned
+
+threaded one year @ a time, 1/4 thread per arg: 5m32s, 3m17s
+still show dips in cpu, not as hard, flux over larger hills
+higher frequency of spikes, not constant
+
+## strangly in tests both cps would go up and down ~together
+
+threaded 1/4 thread per years, 1/4 thread per month: 4m32s, 3m39s
+not quite pegged but close
+network hits 0 less often, still not constant
+
+threaded 1 thread per year, 1 thread per month: 5m6s, 3m57s
+cpu pegged upon initial response set, than has dips like
+the first test. than evens out to have cpu like the 3rd test
+network addapter never hits 0, each thread takes 11MB of memory
+after all requests come in cpu's pegged
+
+non-threaded: 9m59s, 3m37s
+cpu stays around 70% shaking wildly
+each network call comes in one after the next
+
+## their servers must love this
