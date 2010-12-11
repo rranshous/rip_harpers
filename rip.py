@@ -85,7 +85,7 @@ def get_contents(elements):
 def get_all_data():
     # each arg gets *'d
     args = map(lambda a: (a,),range(1985,date.today().year+1))
-    year_data = thread_out_work(args,get_year_data,1,True)
+    year_data = thread_out_work(args,get_year_data,1)
     return year_data
 
 
@@ -96,7 +96,7 @@ def get_year_data(year):
             break # can't see into the future
         args.append((year,month))
 
-    month_data = thread_out_work(args,get_month_data,1,True)
+    month_data = thread_out_work(args,get_month_data,1)
 
     return month_data
 
